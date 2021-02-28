@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class StoryEditor extends StatefulWidget {
@@ -43,7 +45,7 @@ class _StoryEditorState extends State<StoryEditor> {
           setState(() {
             _activeItem.position = Offset(left, top);
             _activeItem.rotation = details.rotation + _currentRotation;
-            _activeItem.scale = details.scale * _currentScale;
+            _activeItem.scale = max(min(details.scale * _currentScale, 3), 0.2);
           });
         },
         child: Stack(
